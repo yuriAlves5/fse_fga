@@ -64,8 +64,8 @@ def estados_da_sala_1():
     else:
         led_4 = 'Desligado'
 
-    print('Lâmpada 01 da Sala ' + led_1 + ', Lâmpada 02 da Sala ' + led_2+ ', Ar-Condicionado '+ led_3 +', Projetor Multimídia ' + led_4)
-
+    mensagem = ('Lâmpada 01 da Sala ' + led_1 + '\n, Lâmpada 02 da Sala ' + led_2+ '\n, Ar-Condicionado '+ led_3 +'\n, Projetor Multimídia ' + led_4)
+    client.send(mensagem.encode('utf-8'))
     try:
         dht = Adafruit_DHT.DHT22
         humidate, temperature = Adafruit_DHT.read_retry(dht, 4)
@@ -100,8 +100,9 @@ def estados_da_sala_2():
     else:
         led_4 = 'Desligado'
 
-    print('Lâmpada 01 da Sala ' + led_1 + ', Lâmpada 02 da Sala ' + led_2+ ', Ar-Condicionado '+ led_3 +', Projetor Multimídia ' + led_4)
-
+    mensagem = ('Lâmpada 01 da Sala ' + led_1 + '\n, Lâmpada 02 da Sala ' + led_2+ '\n, Ar-Condicionado '+ led_3 +'\n, Projetor Multimídia ' + led_4)
+    client.send(mensagem.encode('utf-8')) 
+    
     dht = Adafruit_DHT.DHT22
     humidate, temperature = Adafruit_DHT.read_retry(dht, 18)
     print(str(humidate) + ' ' + str(temperature))
