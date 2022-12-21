@@ -26,6 +26,17 @@ def send_server(client):
     menu()
     while True:
         message = input()
+        if message == '7':
+            print('1 - Ligar lampada 1 sala 1')
+            print('2 - Ligar lampada 2 sala 1')
+            print('3 - Ligar ar condicionado sala 1')
+            print('4 - Ligar projetor sala 1')
+            print('5 - Ligar lampada 1 sala 2')
+            print('6 - Ligar lampada 2 sala 2')
+            print('7 - Ligar ar condicionado sala 2')
+            print('8 - Ligar projetor sala 2')
+            message = ('7')+ input()
+            
         client.send(message.encode('utf-8'))
         menu()
 
@@ -38,6 +49,8 @@ def menu():
     print('4 - Desligar lampadas sala 2')
     print('5 - estados da sala 1')
     print('6 - estados da sala 2')
+    print('7 - ligar aparelho especifico')
+
  
 
 

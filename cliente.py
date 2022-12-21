@@ -1,8 +1,7 @@
 import socket
 import threading
-import board
 from gpiozero import LED
-import adafruit_dht
+
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(('localhost', 10451))
@@ -26,10 +25,40 @@ def client_receive():
                 estados_da_sala_1()
             elif message == '6':
                 estados_da_sala_2()
+            else:
+                ligar_lampada_especifica(message)
         except:
             print('Error!')
             client.close()
             break
+
+def ligar_lampada_especifica(num):
+    num = int(num) - 70
+    
+    if num == 1:
+        led = LED(18)
+        led.on()
+    elif num == 2:
+        led = LED(23)
+        led.on()
+    elif num == 3:
+        led = LED(24)
+        led.on()
+    elif num == 4:
+        led = LED(25)
+        led.on()
+    elif num == 5:
+        led = LED(26)
+        led.on()
+    elif num == 6:
+        led = LED(19)
+        led.on()
+    elif num == 7:
+        led = LED(13)
+        led.on()
+    elif num == 8:
+        led = LED(6)
+        led.on()
 
 def ligar_lampadas_sala1():
     led = LED(18)
@@ -89,14 +118,14 @@ def estados_da_sala_1():
     mensagem = ('Lâmpada 01 da Sala ' + led_1 + '\nLâmpada 02 da Sala ' + led_2+ '\nAr-Condicionado '+ led_3 +'\nProjetor Multimídia ' + led_4)
     client.send(mensagem.encode('utf-8')) 
 
-    try:
-        dhtDevice = adafruit_dht.DHT22(board.D4)
-        temperature_c = dhtDevice.temperature
-        humidity = dhtDevice.humidity
-        mensagem = ('Temperatura: ' + str(temperature_c) + 'C' + '\nUmidade: ' + str(humidity) + '%')
-        client.send(mensagem.encode('utf-8'))
-    except:
-        print('Erro ao ler os sensores de temperatura e umidade')
+    # try:
+    #     dhtDevice = adafruit_dht.DHT22(board.D4)
+    #     temperature_c = dhtDevice.temperature
+    #     humidity = dhtDevice.humidity
+    #     mensagem = ('Temperatura: ' + str(temperature_c) + 'C' + '\nUmidade: ' + str(humidity) + '%')
+    #     client.send(mensagem.encode('utf-8'))
+    # except:
+    #     print('Erro ao ler os sensores de temperatura e umidade')
 
 def estados_da_sala_2():
     led = LED(26)
@@ -128,14 +157,14 @@ def estados_da_sala_2():
     mensagem = ('Lâmpada 01 da Sala ' + led_1 + '\nLâmpada 02 da Sala ' + led_2+ '\nAr-Condicionado '+ led_3 +'\nProjetor Multimídia ' + led_4)
     client.send(mensagem.encode('utf-8')) 
 
-    try:
-        dhtDevice = adafruit_dht.DHT22(board.D4)
-        temperature_c = dhtDevice.temperature
-        humidity = dhtDevice.humidity
-        mensagem = ('Temperatura: ' + str(temperature_c) + 'C' + '\nUmidade: ' + str(humidity) + '%')
-        client.send(mensagem.encode('utf-8'))
-    except:
-        print('Erro ao ler os sensores de temperatura e umidade')
+    # try:
+    #     dhtDevice = adafruit_dht.DHT22(board.D4)
+    #     temperature_c = dhtDevice.temperature
+    #     humidity = dhtDevice.humidity
+    #     mensagem = ('Temperatura: ' + str(temperature_c) + 'C' + '\nUmidade: ' + str(humidity) + '%')
+    #     client.send(mensagem.encode('utf-8'))
+    # except:
+    #     print('Erro ao ler os sensores de temperatura e umidade')
 
 def client_send():
     while True:
