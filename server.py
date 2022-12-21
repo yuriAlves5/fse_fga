@@ -21,7 +21,7 @@ def receiver_server(client):
         message = client.recv(1024).decode('utf-8')
         print(f'{message}')
 
-def send_server(client,send_thread,receive_thread):
+def send_server(client):
     menu()
     while True:
         message = input()
@@ -51,7 +51,7 @@ def receive():
         receive_thread = threading.Thread(target=receiver_server, args=(client,))
         receive_thread.start()
 
-        send_thread = threading.Thread(target=send_server, args=(client,send_thread,receive_thread))
+        send_thread = threading.Thread(target=send_server, args=(client,))
         send_thread.start()
 
 if __name__ == "__main__":
