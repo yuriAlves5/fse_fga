@@ -25,7 +25,7 @@ def client_receive():
                 estados_da_sala_1()
             elif message == '6':
                 estados_da_sala_2()
-            else:
+            elif message == '71':
                 ligar_lampada_especifica(message)
         except:
             print('Error!')
@@ -34,10 +34,10 @@ def client_receive():
 
 def ligar_lampada_especifica(num):
     num = int(num) - 70
-    
     if num == 1:
         led = LED(18)
         led.on()
+        print('led 1 ligado')
     elif num == 2:
         led = LED(23)
         led.on()
