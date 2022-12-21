@@ -27,13 +27,13 @@ def client_receive():
             break
 
 def ligar_lampada():
-    led = LED(19)
+    led = LED(18)
     led.on()
     print('ligar_lampada')
     print(led.value)
 
 def desligar_lampada():
-    led = LED(19)
+    led = LED(18)
     led.off()
     print('desligar_lampada')
 
@@ -46,14 +46,44 @@ def estados_da_sala_1():
     led_3 = led.value
     led = LED(25)
     led_4 = led.value
-    print(led_1,led_2,led_3,led_4)
+
 
     dht = Adafruit_DHT.DHT22
     humidate, temperature = Adafruit_DHT.read_retry(dht, 4)
     print(str(humidate) + ' ' + str(temperature))
 
 def estados_da_sala_2():
-    print('estados da lampada')
+    led = LED(26)
+    led_1 = led.value
+    if(led_1 == 1):
+        led_1 = 'Ligado'
+    else:
+        led_1 = 'Desligado'
+
+    led = LED(19)
+    led_2 = led.value
+    if(led_2 == 1):
+        led_2 = 'Ligado'
+    else:
+        led_2 = 'Desligado'
+    led = LED(13)
+    led_3 = led.value
+    if(led_3 == 1):
+        led_3 = 'Ligado'
+    else:
+        led_3 = 'Desligado'
+    led = LED(6)
+    led_4 = led.value
+    if(led_4 == 1):
+        led_4 = 'Ligado'
+    else:
+        led_4 = 'Desligado'
+
+    print('Lâmpada 01 da Sala ' + led_1 + ', Lâmpada 02 da Sala ' + led_2+ ', Ar-Condicionado '+ led_3 +', Projetor Multimídia ' + led_4)
+
+    dht = Adafruit_DHT.DHT22
+    humidate, temperature = Adafruit_DHT.read_retry(dht, 18)
+    print(str(humidate) + ' ' + str(temperature))
 
 def client_send():
     while True:
