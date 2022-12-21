@@ -27,6 +27,7 @@ def send_server(client):
     while True:
         message = input()
         if message == '7':
+            os.system('clear')
             print('1 - Ligar lampada 1 sala 1')
             print('2 - Ligar lampada 2 sala 1')
             print('3 - Ligar ar condicionado sala 1')
@@ -37,6 +38,7 @@ def send_server(client):
             print('8 - Ligar projetor sala 2')
             message = input()
             message = str(int(message) + 70)
+            os.system('clear')
             
         client.send(message.encode('utf-8'))
         menu()
