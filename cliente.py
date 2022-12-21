@@ -24,12 +24,12 @@ def client_receive():
             break
 
 def ligar_lampada():
-    led = LED(18)
+    led = LED(19)
     led.on()
     print('ligar_lampada')
 
 def desligar_lampada():
-    led = LED(18)
+    led = LED(19)
     led.off()
     print('desligar_lampada')
 
