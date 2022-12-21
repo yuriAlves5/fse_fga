@@ -15,26 +15,47 @@ def client_receive():
             message = client.recv(1024).decode('utf-8')
             print(message)
             if message == '1':
-                ligar_lampada()
+                ligar_lampadas_sala1()
             elif message == '2':
-                desligar_lampada()
+                desligar_lampadas_sala1()
             elif message == '3':
-                estados_da_sala_1()
+                ligar_lampadas_sala2()
             elif message == '4':
+                desligar_lampadas_sala2()
+            elif message == '5':
+                estados_da_sala_1()
+            elif message == '6':
                 estados_da_sala_2()
         except:
             print('Error!')
             client.close()
             break
 
-def ligar_lampada():
+def ligar_lampadas_sala1():
     led = LED(18)
     led.on()
-    print('ligar_lampada')
+    led = LED(23)
+    led.on()
     print(led.value)
 
-def desligar_lampada():
+def desligar_lampadas_sala1():
     led = LED(18)
+    led.off()
+    led = LED(23)
+    led.off()
+    print('desligar_lampada')
+
+def ligar_lampadas_sala2():
+    led = LED(26)
+    led.on()
+    led = LED(19)
+    led.on()
+    print(led.value)
+
+def desligar_lampadas_sala2():
+    led = LED(26)
+    led.off()
+    led = LED(19)
     led.off()
     print('desligar_lampada')
 
@@ -65,7 +86,7 @@ def estados_da_sala_1():
     else:
         led_4 = 'Desligado'
 
-    mensagem = ('Lâmpada 01 da Sala' + led_1 + '\nLâmpada 02 da Sala' + led_2+ '\nAr-Condicionado '+ led_3 +'\nProjetor Multimídia ' + led_4)
+    mensagem = ('Lâmpada 01 da Sala ' + led_1 + '\nLâmpada 02 da Sala ' + led_2+ '\nAr-Condicionado '+ led_3 +'\nProjetor Multimídia ' + led_4)
     client.send(mensagem.encode('utf-8')) 
 
     try:
