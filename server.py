@@ -35,6 +35,7 @@ def send_server(client):
             print('6 - Ligar lampada 2 sala 2')
             print('7 - Ligar ar condicionado sala 2')
             print('8 - Ligar projetor sala 2')
+            message = input()
             message = str(int(message) + 70)
             
         client.send(message.encode('utf-8'))
