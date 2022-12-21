@@ -25,7 +25,7 @@ def client_receive():
                 estados_da_sala_1()
             elif message == '6':
                 estados_da_sala_2()
-            elif int(message) >= 70:
+            elif message[0] >= '7':
                 ligar_lampada_especifica(message)
         except:
             print('Error!')
