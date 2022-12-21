@@ -21,7 +21,7 @@ def receiver_server(client):
         message = client.recv(1024).decode('utf-8')
         print(f'{message}')
 
-def send_server(client):
+def send_server(client,send_thread,receive_thread):
     menu()
     while True:
         message = input()
@@ -31,10 +31,11 @@ def send_server(client):
 # Main function to receive the clients connection
 def menu():
     os.system('clear')
-    print('1 - Estados da lampada')
-    print('2 - Ligar lampada')
-    print('3 - Desligar lampada')
-    print('4 - Sair')   
+    print('1 - Ligar lampada')
+    print('2 - Desligar lampada')
+    print('3 - estados da sala 1')
+    print('4 - estados da sala 2')
+ 
 
 
 def receive():
@@ -50,10 +51,8 @@ def receive():
         receive_thread = threading.Thread(target=receiver_server, args=(client,))
         receive_thread.start()
 
-        send_thread = threading.Thread(target=send_server, args=(client,))
+        send_thread = threading.Thread(target=send_server, args=(client,send_thread,receive_thread))
         send_thread.start()
-
-
 
 if __name__ == "__main__":
     receive()
