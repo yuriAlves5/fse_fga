@@ -1,6 +1,7 @@
 import socket
 import threading
 from gpiozero import LED
+import Adafruit_DHT
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(('localhost', 59000))
@@ -46,6 +47,10 @@ def estados_da_sala_1():
     led = LED(25)
     led_4 = led.value
     print(led_1,led_2,led_3,led_4)
+
+    dht = Adafruit_DHT.DHT22
+    humidate, temperature = Adafruit_DHT.read_retry(dht, 4)
+    print(str(humidate) + ' ' + str(temperature))
 
 def estados_da_sala_2():
     print('estados da lampada')
