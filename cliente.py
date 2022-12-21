@@ -12,13 +12,12 @@ def client_receive():
         try:
             message = client.recv(1024).decode('utf-8')
             print(message)
-            match message:
-                case '1':
-                    estados_da_lampada()
-                case '2':
-                    ligar_lampada()
-                case '3':
-                    desligar_lampada()
+            if message == '1':
+                estados_da_lampada()
+            elif message == '2':
+                ligar_lampada()
+            elif message == '3':
+                desligar_lampada()
         except:
             print('Error!')
             client.close()
@@ -32,7 +31,7 @@ def ligar_lampada():
 def desligar_lampada():
     led = LED(18)
     led.off()
-    print('ligar_lampada')
+    print('desligar_lampada')
 
 def estados_da_lampada():
     print('estados da lampada')
