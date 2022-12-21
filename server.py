@@ -2,6 +2,7 @@
 import threading
 import socket
 import os
+import log
 
 
 host = 'localhost'
@@ -43,6 +44,7 @@ def menu():
 def receive():
     while True:
         print('Servidor esta funcionando ...')
+        log.logger.info("[i] Server Online")
         client, address = server.accept()
 
         print(f'Conexao estabelecida com {str(address)}')
