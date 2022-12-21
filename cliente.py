@@ -25,7 +25,7 @@ def client_receive():
                 estados_da_sala_1()
             elif message == '6':
                 estados_da_sala_2()
-            elif message[0] >= '7':
+            elif message[0] == '7':
                 ligar_lampada_especifica(message)
         except:
             print('Error!')
@@ -37,28 +37,43 @@ def ligar_lampada_especifica(num):
     if num == 1:
         led = LED(18)
         led.on()
-        print('led 1 ligado')
+        mensagem = 'Lampada 1 sala 1 ligada'
+        client.send(mensagem.encode('utf-8')) 
     elif num == 2:
         led = LED(23)
         led.on()
+        mensagem = 'Lampada 2 sala 1 ligada'
+        client.send(mensagem.encode('utf-8'))
     elif num == 3:
         led = LED(24)
         led.on()
+        mensagem = 'Ar condicionado sala 1 ligado'
+        client.send(mensagem.encode('utf-8'))
     elif num == 4:
         led = LED(25)
         led.on()
+        mensagem = 'Projetor sala 1 ligado'
+        client.send(mensagem.encode('utf-8'))
     elif num == 5:
         led = LED(26)
         led.on()
+        mensagem = 'Lampada 1 sala 2 ligada'
+        client.send(mensagem.encode('utf-8'))
     elif num == 6:
         led = LED(19)
         led.on()
+        mensagem = 'Lampada 2 sala 2 ligada'
+        client.send(mensagem.encode('utf-8'))
     elif num == 7:
         led = LED(13)
         led.on()
+        mensagem = 'Ar condicionado sala 2 ligado'
+        client.send(mensagem.encode('utf-8'))
     elif num == 8:
         led = LED(6)
         led.on()
+        mensagem = 'Projetor sala 2 ligado'
+        client.send(mensagem.encode('utf-8'))
 
 def ligar_lampadas_sala1():
     led = LED(18)

@@ -38,7 +38,7 @@ def send_server(client):
             print('8 - Ligar projetor sala 2')
             message = input()
             message = str(int(message) + 70)
-            os.system('clear')
+            return send_server(client)
             
         client.send(message.encode('utf-8'))
         menu()
