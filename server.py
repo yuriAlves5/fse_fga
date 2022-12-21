@@ -41,7 +41,8 @@ def send_server(client):
             return send_server(client)
             
         client.send(message.encode('utf-8'))
-        menu()
+        return send_server(client)
+
 
 # Main function to receive the clients connection
 def menu():
