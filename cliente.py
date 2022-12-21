@@ -1,5 +1,6 @@
 import socket
 import threading
+import board
 from gpiozero import LED
 import adafruit_dht
 
@@ -103,12 +104,17 @@ def estados_da_sala_2():
     else:
         led_4 = 'Desligado'
 
-    mensagem = ('Lâmpada 01 da Sala' + led_1 + '\nLâmpada 02 da Sala' + led_2+ '\nAr-Condicionado '+ led_3 +'\nProjetor Multimídia ' + led_4)
+    mensagem = ('Lâmpada 01 da Sala ' + led_1 + '\nLâmpada 02 da Sala ' + led_2+ '\nAr-Condicionado '+ led_3 +'\nProjetor Multimídia ' + led_4)
     client.send(mensagem.encode('utf-8')) 
 
-    dht = Adafruit_DHT.DHT22
-    humidate, temperature = Adafruit_DHT.read_retry(dht, 18)
-    print(str(humidate) + ' ' + str(temperature))
+    try:
+        dhtDevice = adafruit_dht.DHT22(board.D4)
+        temperature_c = dhtDevice.temperature
+        humidity = dhtDevice.humidity
+        mensagem = ('Temperatura: ' + str(temperature_c) + 'C' + '\nUmidade: ' + str(humidity) + '%')
+        client.send(mensagem.encode('utf-8'))
+    except:
+        print('Erro ao ler os sensores de temperatura e umidade')
 
 def client_send():
     while True:
