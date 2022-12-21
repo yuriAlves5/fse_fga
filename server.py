@@ -46,13 +46,13 @@ def send_server(client):
 # Main function to receive the clients connection
 def menu():
     os.system('clear')
-    print('1 - Ligar lampadas sala 1')
-    print('2 - Desligar lampadas sala 1')
-    print('3 - Ligar lampadas sala 2')
-    print('4 - Desligar lampadas sala 2')
-    print('5 - estados da sala 1')
-    print('6 - estados da sala 2')
-    print('7 - ligar aparelho especifico')
+    print('1 - Ligar todos aparelhos sala 1')
+    print('2 - Desligar todos aparelhos sala 1')
+    print('3 - Ligar todos aparelhos sala 2')
+    print('4 - Desligar todos aparelhos sala 2')
+    print('5 - Estados da sala 1')
+    print('6 - Estados da sala 2')
+    print('7 - Ligar aparelho especifico')
 
  
 
