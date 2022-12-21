@@ -5,7 +5,7 @@ import os
 
 
 host = 'localhost'
-port = 59000
+port = 10451
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 server.bind((host, port))
@@ -31,10 +31,12 @@ def send_server(client):
 # Main function to receive the clients connection
 def menu():
     os.system('clear')
-    print('1 - Ligar lampada')
-    print('2 - Desligar lampada')
-    print('3 - estados da sala 1')
-    print('4 - estados da sala 2')
+    print('1 - Ligar lampadas sala 1')
+    print('2 - Desligar lampadas sala 1')
+    print('3 - Ligar lampadas sala 2')
+    print('4 - Desligar lampadas sala 2')
+    print('5 - estados da sala 1')
+    print('6 - estados da sala 2')
  
 
 

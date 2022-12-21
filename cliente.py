@@ -5,7 +5,7 @@ from gpiozero import LED
 import adafruit_dht
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(('localhost', 59000))
+client.connect(('localhost', 10451))
 
 
 
