@@ -13,3 +13,5 @@ Para executar os clientes, execute no terminal:
 
 ```bash
 python3 client.py
+
+link para video https://unbbr.sharepoint.com/:v:/s/gravar560/EVZvaZt2wA1Bgb1uwP_5850ByxdMVpP7Qak33nm4IKlZCA?e=hKMhuL
